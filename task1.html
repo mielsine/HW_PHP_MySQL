@@ -1,0 +1,60 @@
+<script>
+   let experience = [
+      {
+         company: "ООО «Рога и копыта»",
+         position: "Менеджер по продажам",
+         duration: "Июнь 2018 – по настоящее время",
+         duties: [
+            "Ведение клиентской базы данных",
+            "Проведение презентаций и переговоров",
+            "Составление договоров и счетов-фактур",
+            "Анализ рынка и конкурентов"
+         ]
+      },
+      {
+         company: "ООО «Цветы и солнце»",
+         position: "Ассистент менеджера по маркетингу",
+         duration: "Август 2017 – май 2018",
+         duties: [
+            "Подготовка презентационных материалов и рекламных роликов",
+            "Анализ работы сайта и социальных сетей",
+            "Организация и проведение мероприятий",
+            "Взаимодействие с подрядчиками"
+         ]
+      }
+   ];
+</script>
+
+<body>
+   <ul>
+      <!-- Цикл for -->
+      <h2>Опыт работы:</h2>
+      {% for (let i = 0; i < experience.length; i++) { %}
+         <li>
+            <h3>{{ experience[i].position }}</h3>
+            <p>{{ experience[i].company }} | {{ experience[i].duration }}</p>
+            <ul>
+               {% for (let j = 0; j < experience[i].duties.length; j++) { %}
+                  <li>{{ experience[i].duties[j] }}</li>
+               {% } %}
+            </ul>
+         </li>
+      {% } %}
+   </ul>
+   
+   <ul>
+      <!-- Цикл forEach -->
+      <h2>Опыт работы:</h2>
+      {% experience.forEach(function(item) { %}
+         <li>
+            <h3>{{ item.position }}</h3>
+            <p>{{ item.company }} | {{ item.duration }}</p>
+            <ul>
+               {% item.duties.forEach(function(duty) { %}
+                  <li>{{ duty }}</li>
+               {% }); %}
+            </ul>
+         </li>
+      {% }); %}
+   </ul>
+</body>
